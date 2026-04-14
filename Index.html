@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anwar Tihama Building Materials Co.</title>
+  <meta name="description" content="Trusted supplier of building materials in Saudi Arabia. Lighting fixtures, electrical machineries and tools, PVC pipes and fittings." />
+  <style>
+    :root {
+      --primary: #ef7f1a;
+      --primary-dark: #cf6a16;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --white: #ffffff;
+      --border: #e5e7eb;
+      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #ffffff 0%, #fff8f1 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(229,231,235,0.9);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1.2;
+    }
+
+    .brand-text span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover { color: var(--primary-dark); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(239,127,26,0.25);
+    }
+
+    .btn-primary:hover { background: var(--primary-dark); }
+
+    .btn-outline {
+      background: #fff;
+      border-color: rgba(31,41,55,0.12);
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(239,127,26,0.4);
+      color: var(--primary-dark);
+    }
+
+    .hero {
+      padding: 72px 0 52px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(239,127,26,0.1);
+      color: var(--primary-dark);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 660px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, #fff, #fff9f4);
+      border: 1px solid rgba(239,127,26,0.18);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      bottom: -80px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(239,127,26,0.12), rgba(239,127,26,0));
+    }
+
+    .logo-showcase {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+    }
+
+    .logo-showcase img {
+      width: min(100%, 260px);
+      height: auto;
+      object-fit: contain;
+    }
+
+    .mini-grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .mini-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .section {
+      padding: 46px 0;
+    }
+
+    .section h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-intro {
+      margin: 0 0 28px;
+      color: var(--muted);
+      max-width: 760px;
+      font-size: 17px;
+    }
+
+    .about-box {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+    }
+
+    .panel {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .list-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      margin-top: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 0 6px rgba(239,127,26,0.12);
+      flex: 0 0 auto;
+    }
+
+    .product-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(239,127,26,0.28);
+    }
+
+    .icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(239,127,26,0.1);
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+    }
+
+    .icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: currentColor;
+    }
+
+    .product-card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .product-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .contact-card h3,
+    .form-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    .contact-items {
+      display: grid;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    .contact-item span,
+    .contact-item a {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    input, textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      font: inherit;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: rgba(239,127,26,0.5);
+      box-shadow: 0 0 0 4px rgba(239,127,26,0.12);
+    }
+
+    textarea {
+      min-height: 132px;
+      resize: vertical;
+    }
+
+    .form-note {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 0;
+    }
+
+    footer {
+      padding: 28px 0 42px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-box {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 22px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-box,
+      .contact-grid,
+      .product-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding-top: 44px; }
+      .mini-grid { grid-template-columns: 1fr; }
+      .topbar { position: static; }
+      .brand-text strong { font-size: 14px; }
+      h1 { font-size: 34px; }
+      .hero p { font-size: 16px; }
+      .section { padding: 34px 0; }
+      .panel, .product-card, .hero-card { padding: 20px; }
+      .brand-logo { width: 48px; height: 48px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#home">
+        <img src="logo.png" alt="Anwar Tihama Building Materials Co. Logo" class="brand-logo" />
+        <div class="brand-text">
+          <strong>Anwar Tihama Building Materials Co.</strong>
+          <span>Trusted supplier of building materials in Saudi Arabia.</span>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-primary" href="https://wa.me/966531015991" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Reliable Building Materials Supplier</div>
+          <h1>Anwar Tihama Building Materials Co.</h1>
+          <p>Trusted supplier of building materials in Saudi Arabia, offering dependable products and service across lighting fixtures, electrical machineries and tools, and PVC pipes and fittings.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Contact Us</a>
+            <a class="btn btn-outline" href="mailto:sales@anwartihama.com">sales@anwartihama.com</a>
+          </div>
+          <div class="highlights">
+            <div class="tag">Lighting Fixtures</div>
+            <div class="tag">Electrical Machineries &amp; Tools</div>
+            <div class="tag">PVC Pipes &amp; Fittings</div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="logo-showcase">
+            <img src="logo.png" alt="Anwar Tihama Building Materials Co. Logo" />
+          </div>
+          <div class="mini-grid">
+            <div class="mini-card">Professional Supply</div>
+            <div class="mini-card">Quality Products</div>
+            <div class="mini-card">Quick Response</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <h2>About Us</h2>
+        <p class="section-intro">We provide a professional and dependable supply experience for customers looking for essential building materials in Saudi Arabia.</p>
+
+        <div class="about-box">
+          <div class="panel">
+            <p>
+              Anwar Tihama Building Materials Co. is a trusted supplier of selected construction and finishing materials,
+              focused on serving customer requirements with quality products, competitive pricing and dependable communication.
+            </p>
+            <p>
+              Our current product focus includes lighting fixtures, electrical machineries and tools, and PVC pipes and fittings.
+            </p>
+          </div>
+
+          <div class="panel">
+            <h3 style="margin-top:0; margin-bottom:14px; font-size:24px;">Our Core Categories</h3>
+            <div class="list">
+              <div class="list-item">
+                <div class="dot"></div>
+                <div>
+                  <strong>Lighting Fixtures</strong><br />
+                  Quality lighting products for residential, commercial and project requirements.
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="dot"></div>
+                <div>
+                  <strong>Electrical Machineries and Tools</strong><br />
+                  Essential electrical and tool-related products for professional and practical use.
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="dot"></div>
+                <div>
+                  <strong>PVC Pipes and Fittings</strong><br />
+                  Reliable pipe and fitting solutions for supply, installation and maintenance needs.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Top Products</h2>
+        <p class="section-intro">A focused range of products for everyday supply and project requirements.</p>
+        <div class="product-cards">
+          <div class="product-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <path d="M9 18h6" />
+                <path d="M10 22h4" />
+                <path d="M12 2a6 6 0 0 0-3.8 10.6c.6.5 1.2 1.4 1.4 2.4h4.8c.2-1 .8-1.9 1.4-2.4A6 6 0 0 0 12 2Z" />
+              </svg>
+            </div>
+            <h3>Lighting Fixtures</h3>
+            <p>Practical and dependable lighting products suitable for a wide range of building applications.</p>
+          </div>
+
+          <div class="product-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <path d="M14.7 6.3a1 1 0 0 1 1.4 0l1.6 1.6a1 1 0 0 1 0 1.4l-7.8 7.8-3.5.8.8-3.5 7.5-8.1Z" />
+                <path d="M13 8l3 3" />
+              </svg>
+            </div>
+            <h3>Electrical Machineries and Tools</h3>
+            <p>Selected machinery and tool-related products to support installation, maintenance and technical work.</p>
+          </div>
+
+          <div class="product-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <path d="M4 7h9a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3H4V7Z" />
+                <path d="M16 10h2a2 2 0 0 1 2 2v1h-4" />
+                <path d="M6 13v4" />
+              </svg>
+            </div>
+            <h3>PVC Pipes and Fittings</h3>
+            <p>Reliable PVC pipe and fitting products for ongoing building, service and maintenance requirements.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <p class="section-intro">Get in touch for enquiries and supply requirements. We will be happy to assist you.</p>
+
+        <div class="contact-grid">
+          <div class="panel contact-card">
+            <h3>Business Contact</h3>
+            <p style="margin:0; color: var(--muted);">For product enquiries and supply requirements, contact us directly by phone, email or WhatsApp.</p>
+
+            <div class="contact-items">
+              <div class="contact-item">
+                <div class="icon" style="width:46px; height:46px; margin:0;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                    <path d="M4 6h16v12H4z" />
+                    <path d="m4 7 8 6 8-6" />
+                  </svg>
+                </div>
+                <div>
+                  <strong>Email</strong>
+                  <a href="mailto:sales@anwartihama.com">sales@anwartihama.com</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="icon" style="width:46px; height:46px; margin:0;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                    <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.7 2.6a2 2 0 0 1-.5 2.1l-1.3 1.3a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.8.4 1.7.6 2.6.7A2 2 0 0 1 22 16.9Z" />
+                  </svg>
+                </div>
+                <div>
+                  <strong>Phone / WhatsApp</strong>
+                  <a href="tel:+966531015991">+966 53 101 5991</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="icon" style="width:46px; height:46px; margin:0;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                    <path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20l1.2-5.2A8.5 8.5 0 1 1 21 11.5Z" />
+                    <path d="M8.5 9.5c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.7 1.7.8 1.8.1.2.1.4 0 .6l-.3.4c-.1.1-.2.3-.1.5.2.4.7 1.1 1.4 1.8.9.8 1.6 1.1 2 1.2.2.1.4 0 .5-.1l.5-.6c.2-.2.4-.2.6-.1l1.7.8c.2.1.4.2.4.5v.5c0 .2 0 .4-.5.6-.5.2-1.1.4-1.8.3-.8-.1-1.8-.5-3.1-1.6-1.6-1.4-2.6-3-2.9-3.5-.3-.5-.8-1.3-.8-2 0-.7.4-1.1.7-1.4Z" />
+                  </svg>
+                </div>
+                <div>
+                  <strong>WhatsApp</strong>
+                  <a href="https://wa.me/966531015991" target="_blank" rel="noopener">Chat on WhatsApp</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel form-card">
+            <h3>Send an Enquiry</h3>
+            <p style="margin:0; color: var(--muted);">Fill out the form below and your enquiry will be sent to our email.</p>
+
+            <form action="https://formsubmit.co/sales@anwartihama.com" method="POST">
+              <input type="hidden" name="_subject" value="New Website Enquiry - Anwar Tihama Building Materials Co.">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
+
+              <div class="field">
+                <label for="name">Full Name</label>
+                <input id="name" name="name" type="text" placeholder="Enter your name" required />
+              </div>
+
+              <div class="field">
+                <label for="email">Email Address</label>
+                <input id="email" name="email" type="email" placeholder="Enter your email" required />
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone Number</label>
+                <input id="phone" name="phone" type="tel" placeholder="Enter your phone number" />
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Write your enquiry" required></textarea>
+              </div>
+
+              <button class="btn btn-primary" type="submit">Submit Enquiry</button>
+              <p class="form-note">The form is set to send messages to sales@anwartihama.com.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-box">
+      <div>© 2026 Anwar Tihama Building Materials Co. All rights reserved.</div>
+      <div>
+        <a href="mailto:sales@anwartihama.com">sales@anwartihama.com</a> ·
+        <a href="tel:+966531015991">+966 53 101 5991</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
